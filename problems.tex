@@ -196,13 +196,58 @@ $\gamma_{XY} = Cov(X_{t+h} + Y_{t+h}, X_t + Y_t) = Cov(X_{t+h}, X_{t}) + Cov(X_{
 Следователно процесът $\{X_t + Y_t \}$ е стационарен с автоковариационна функция, равна на сумата от автоковариационните функции на $\{X_t \}$ и $\{Y_t \}$.
 \end{flushleft}
 
-\section*{Задача 15}
+\section*{Задача 14}
 \begin{flushleft}
-Даден е $\{X_t \}$ да е $AR(1)$ процес, определен от $X_t = \phi X_{t-1} + Z_t$, където $\{Z_t \}$ e $WN(0, \sigma^2), |\phi| < 1$ и $Z_t$ е некорелирано с $X_s$ за всяко $s < t$. Също така $\phi = 0.9$ и $\sigma^2 = 1$. \\
-\end{flushleft}
+Разглеждаме $$X_t = Z_t + 0.3Z_{t-1} - 0.4Z_{t-2},$$ където $\{Z_t \}$ e $WN(0, 1)$. Да запишем процеса във вида $$X_t = (1 + 0.3B - 0.4B^2)Z_t,$$ където $B$ е шифтовият оператор $B^jX_t = X_{t-j}$. По дефиниция процесът прилича на $ARMA(0, 2) = MA(2)$ процес. Нека разгледаме:
+
 \begin{flushleft}
-$Var \overline{X}_4 = \frac{1}{4^2} \sum_{i=1}^{4} \sum_{j=1}^{4} Cov(X_i, X_j) = \frac{1}{4^2} \sum_{i-j=-4}^{4} (n - |i - j|)\gamma(i-j) = \frac{1}{4} \sum_{h=-4}^{4} (1 - \frac{|h|}{n})\gamma(h) = \frac{1}{4} \sum_{h=-4}^{4} (1 - \frac{|h|}{4}) \frac{\phi^{|h|} \sigma^2}{1 - \phi^2}$
+Авторегресионният полином $\phi(z) = 1$, тоест $\phi(z) \neq 0, \forall |z| \leq 1$. Следователно процесът е каузален, съответно и стационарен (защото $\phi(z) \neq 0, \forall |z| = 1$).
 \end{flushleft}
+
+\begin{flushleft}
+$MA$ полиномът $\theta(z) = 1 + 0.3z - 0.4z^2 = 0,$ когато $z_1 = -1.25, |-1.25| > 1$ или $z_2 = 2, |2| > 1$. Тоест $\theta(z) \neq 0, \forall |z| < 1$. Следователно $X_t$ е обратим процес. Също така двата полинома нямат общи корени. Следователно можем да говорим за $ARMA(0, 2)$ процес или съответно $MA(2)$ процес.
+\end{flushleft}
+
+\begin{flushleft}
+Да намерим автоковариационната функция на $X_t = Z_t + 0.3Z_{t-1} - 0.4Z_{t-2}:$ \\
+$\gamma(h) = Cov(X_{t+h}, X_t) = Cov(Z_{t+h} + 0.3Z_{t+h-1} - 0.4Z_{t+h-2}, Z_t + 0.3Z_{t-1} - 0.4Z_{t-2}) =$ \\
+$Cov(Z_{t+h}, Z_t) + 0.3Cov(Z_{t+h}, Z_{t-1}) - 0.4Cov(Z_{t+h}, Z_{t-2}) + 0.3Cov(Z_{t+h-1}, Z_t) + 0.09Cov(Z_{t+h-1}, Z_{t-1}) - 0.12Cov(Z_{t+h-1}, Z_{t-2}) - 0.4Cov(Z_{t+h-2}, Z_t) - 0.12Cov(Z_{t+h-2}, Z_{t-1}) + 0.16Cov(Z_{t+h-2}, Z_{t-2})$
+\end{flushleft}
+
+Получаваме следните случаи: \\
+\begin{flushleft}
+1. $h = 0$: \\
+$Cov(X_{t+0}, X_t) = Cov(Z_{t}, Z_t) + 0.3Cov(Z_{t}, Z_{t-1}) - 0.4Cov(Z_{t}, Z_{t-2}) + 0.3Cov(Z_{t-1}, Z_t) + 0.09Cov(Z_{t-1}, Z_{t-1}) - 0.12Cov(Z_{t-1}, Z_{t-2}) - 0.4Cov(Z_{t-2}, Z_t) - 0.12Cov(Z_{t-2}, Z_{t-1}) + 0.16Cov(Z_{t-2}, Z_{t-2}) = $ \\
+$VarZ_t + 0.09VarZ_{t-1} + 0.16VarZ_{t-2} = 1 + 0.09 + 0.16 = 1.25$
+\end{flushleft}
+
+\begin{flushleft}
+2. $h = -1$: \\
+$Cov(X_{t-1}, X_t) = Cov(Z_{t-1}, Z_t) + 0.3Cov(Z_{t-1}, Z_{t-1}) - 0.4Cov(Z_{t-1}, Z_{t-2}) + 0.3Cov(Z_{t-2}, Z_t) + 0.09Cov(Z_{t-2}, Z_{t-1}) - 0.12Cov(Z_{t-2}, Z_{t-2}) - 0.4Cov(Z_{t-3}, Z_t) - 0.12Cov(Z_{t-3}, Z_{t-1}) + 0.16Cov(Z_{t-3}, Z_{t-2})$
+\end{flushleft}
+
+\begin{flushleft}
+3. $h = -2$: \\
+$Cov(X_{t-2}, X_t) = $
+\end{flushleft}
+
+\begin{flushleft}
+4. $h = 1$: \\
+$Cov(X_{t-2}, X_t) = $
+\end{flushleft}
+
+\begin{flushleft}
+5. $h = 2$: \\
+$Cov(X_{t-2}, X_t) = $
+\end{flushleft}
+
+\begin{flushleft}
+6. $|h| > 2$: \\
+$Cov(X_{t+h}, X_t) = 0$ \\
+Следователно $Cov(X_{t+0}, X_t)$ не зависи от $t$ за всяко $h$. Следователно процесът е стационарен.
+\end{flushleft}
+\end{flushleft}
+
 
 \end{flushleft}
 \end{document}
