@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T2A]{fontenc}
 \usepackage[bulgarian]{babel}
+\usepackage{amsmath}
+
 
 \title{Курсова работа по Времеви редове}
 \author{Йоана Левчева, ф.н. 26527}
@@ -209,45 +211,43 @@ $MA$ полиномът $\theta(z) = 1 + 0.3z - 0.4z^2 = 0,$ когато $z_1 =
 \end{flushleft}
 
 \begin{flushleft}
-Да намерим автоковариационната функция на $X_t = Z_t + 0.3Z_{t-1} - 0.4Z_{t-2}:$ \\
-$\gamma(h) = Cov(X_{t+h}, X_t) = Cov(Z_{t+h} + 0.3Z_{t+h-1} - 0.4Z_{t+h-2}, Z_t + 0.3Z_{t-1} - 0.4Z_{t-2}) =$ \\
-$Cov(Z_{t+h}, Z_t) + 0.3Cov(Z_{t+h}, Z_{t-1}) - 0.4Cov(Z_{t+h}, Z_{t-2}) + 0.3Cov(Z_{t+h-1}, Z_t) + 0.09Cov(Z_{t+h-1}, Z_{t-1}) - 0.12Cov(Z_{t+h-1}, Z_{t-2}) - 0.4Cov(Z_{t+h-2}, Z_t) - 0.12Cov(Z_{t+h-2}, Z_{t-1}) + 0.16Cov(Z_{t+h-2}, Z_{t-2})$
+За автоковариационната функция на $MA(2)$ процеса (тъй като е линеен процес) имаме:
+
+$
+  \gamma(h) =
+    \begin{cases}
+      1^2 \sum_{j=0}^{2 - |h|} \theta_j \theta_{j+|h|}\text{, когато} |h| \leq 2 \\
+      0, \text{когато} |h| > 2
+    \end{cases}       
+$ \\
+където $\theta_0 = 1, \theta_1 = 0.3, \theta_2 = -0.4$.
+\end{flushleft}
 \end{flushleft}
 
-Получаваме следните случаи: \\
+\section*{Задача 15}
+
+\textbf{1. $X_t + 0.2X_{t-1} - 0.48X_{t-2} = Z_t$}
 \begin{flushleft}
-1. $h = 0$: \\
-$Cov(X_{t+0}, X_t) = Cov(Z_{t}, Z_t) + 0.3Cov(Z_{t}, Z_{t-1}) - 0.4Cov(Z_{t}, Z_{t-2}) + 0.3Cov(Z_{t-1}, Z_t) + 0.09Cov(Z_{t-1}, Z_{t-1}) - 0.12Cov(Z_{t-1}, Z_{t-2}) - 0.4Cov(Z_{t-2}, Z_t) - 0.12Cov(Z_{t-2}, Z_{t-1}) + 0.16Cov(Z_{t-2}, Z_{t-2}) = $ \\
-$VarZ_t + 0.09VarZ_{t-1} + 0.16VarZ_{t-2} = 1 + 0.09 + 0.16 = 1.25$
-\end{flushleft}
+Да запишем процеса във вида $$(1 + 0.2B - 0.48B^2)X_t = Z_t,$$ където $B$ е шифтовият оператор $B^j X_t = X_{t-j}$. По дефиниция процесът прилича на $ARMA(2, 0) = AR(2)$ процес. Нека разгледаме:
 
 \begin{flushleft}
-2. $h = -1$: \\
-$Cov(X_{t-1}, X_t) = Cov(Z_{t-1}, Z_t) + 0.3Cov(Z_{t-1}, Z_{t-1}) - 0.4Cov(Z_{t-1}, Z_{t-2}) + 0.3Cov(Z_{t-2}, Z_t) + 0.09Cov(Z_{t-2}, Z_{t-1}) - 0.12Cov(Z_{t-2}, Z_{t-2}) - 0.4Cov(Z_{t-3}, Z_t) - 0.12Cov(Z_{t-3}, Z_{t-1}) + 0.16Cov(Z_{t-3}, Z_{t-2})$
-\end{flushleft}
-
-\begin{flushleft}
-3. $h = -2$: \\
-$Cov(X_{t-2}, X_t) = $
-\end{flushleft}
-
-\begin{flushleft}
-4. $h = 1$: \\
-$Cov(X_{t-2}, X_t) = $
+Авторегресионният полином $\phi(z) = 1 + 0.2z - 0.48z^2$, когато $z_1 = -1.25, |-1.25| > 1$ или $z_2 = 1.66, |1.66| > 1$, тоест $\phi(z) \neq 0, \forall |z| \leq 1$. Следователно процесът е каузален, съответно и стационарен (защото $\phi(z) \neq 0, \forall |z| = 1$).
 \end{flushleft}
 
 \begin{flushleft}
-5. $h = 2$: \\
-$Cov(X_{t-2}, X_t) = $
+$MA$ полиномът $\theta(z) = 1$. Тоест $\theta(z) \neq 0, \forall |z| < 1$. Следователно $X_t$ е обратим процес. Също така двата полинома нямат общи корени. Следователно можем да говорим за $ARMA(2, 0)$ процес или съответно $AR(2)$ процес.
 \end{flushleft}
 
 \begin{flushleft}
-6. $|h| > 2$: \\
-$Cov(X_{t+h}, X_t) = 0$ \\
-Следователно $Cov(X_{t+0}, X_t)$ не зависи от $t$ за всяко $h$. Следователно процесът е стационарен.
-\end{flushleft}
+$\{X_t \}$ е каузален процес, за който следователно имаме, че $X_t = \sum_{j=0}^{\infty}\psi_jZ_{t-j}, \forall t$ и: \\
+$\psi_0 = 1$ \\
+$\psi_1 = \theta_1 + \psi_0 \phi_1 = 0 + 1 \times (-0.2) = -0.2$ \\
+$\psi_2 = \theta_2 + \psi_1 \phi_1 + \psi_0 \phi_2 = 0 + (-0.2) \times (-0.2) + 1 \times 0.48 = (-0.2)^2 + 0.48$ \\
+... \\
+$\psi_j = \sum_{k=1}^{2} \phi_k \psi_{j-k} + \theta_j = \phi_1 \psi_{j-1} + \phi_2 \psi_{j-2} = (-0.2)\psi_{j-1} + 0.48\psi_{j-2}, j = 2, 3, ...$ \\
 \end{flushleft}
 
+\end{flushleft}
 
 \end{flushleft}
 \end{document}
