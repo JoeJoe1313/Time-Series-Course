@@ -121,48 +121,88 @@ $MAPE = \frac{1}{n} \sum_{t=1}^{n} \frac{(Y_t - \widehat{Y}_t)}{Y_t} = \frac{1}{
 
 \textbf{1. $X_t = a + bZ_0$}
 \begin{flushleft}
-$EX_t = E(a + bZ_0) = E(a) + E(bZ_0) = a + bE(Z_0) = a,$ което не зависи от $t$. \\
-$Cov(X_{t+h}, X_t) = Cov(a + bZ_0, a + bZ_0) = Var(a + bZ_0) = Var(a) + Var(bZ_0) = a^2 + b^2Var(Z_0) = a^2 + b^2 \sigma^2,$ което не зависи от $t$ за всяко $h$. Следователно процесът е стационарен. 
+$\mu(t) = EX_t = E(a + bZ_0) = E(a) + E(bZ_0) = a + bE(Z_0) = a,$ което не зависи от $t$. \\
+
+\begin{flushleft}
+$\gamma(h) = Cov(X_{t+h}, X_t) = Cov(a + bZ_0, a + bZ_0) = Var(a + bZ_0) = Var(a) + Var(bZ_0) = a^2 + b^2Var(Z_0) = a^2 + b^2 \sigma^2,$ което не зависи от $t$ за всяко $h$, тъй като по условие процесът е стационарен.. Следователно процесът е стационарен. 
+\end{flushleft}
+
 \end{flushleft}
 
 \textbf{2. $X_t = a + bZ_t + cZ_{t-2}$}
 \begin{flushleft}
-$EX_t = E(a + bZ_t + cZ_{t-2}) = E(a) + E(bZ_t) + E(cZ_{t-2}) = a + bE(Z_t) + cE(Z_{t-2}) = a,$ което не зависи от $t$. \\
 
-$E{X_t}^2 = E((a + bZ_t + cZ_{t-2})^2) = E(a^2 + b^2{Z_t}^2 + c^2{Z_{t-2}^2} + 2abZ_t + 2acZ_{t-2} + 2bcZ_tZ_{t-2}) = a^2 + b^2\sigma^2 + c^2\sigma^2 = a^2 + (b^2 + c^2)\sigma^2 < \infty$\\
+\begin{flushleft}
+$\mu(t) = EX_t = E(a + bZ_t + cZ_{t-2}) = E(a) + E(bZ_t) + E(cZ_{t-2}) = a + bE(Z_t) + cE(Z_{t-2}) = a,$ което не зависи от $t$. \\
+\end{flushleft}
 
-$Cov(X_{t+h}, X_t) = $ \\ 
+\begin{flushleft}
+$\gamma(h) = Cov(X_{t+h}, X_t) = $ \\ 
 $Cov(a + bZ_{t+h} + cZ_{t+h-2}, a + bZ_t + cZ_{t-2}) = $ \\
 $Cov(bZ_{t+h}, bZ_{t}) +Cov(bZ_{t+h}, cZ_{t-2}) + Cov(cZ_{t+h-2}, bZ_t) + Cov(cZ_{t+h-2}, cZ_{t-2}) =$ \\ 
 $b^2Cov(Z_{t+h}, Z_t) + bcCov(Z_{t+h}, Z_{t-2}) + bcCov(Z_{t+h-2}, Z_t) + c^2Cov(Z_{t+h-2}, Z_{t-2}) =$ \\
 $b^2E(Z_{t+h}Z_t) + bcE(Z_{t+h}Z_{t-2}) + bcE(Z_{t+h-2}Z_t) + c^2E(Z_{t+h-2}Z_{t-2})$ \\
+\end{flushleft}
 
 Получаваме следните случаи: \\
+\begin{flushleft}
 1. $h = 0$: \\
 $Cov(X_{t+0}, X_t) = b^2E(Z_{t}Z_t) + bcE(Z_{t}Z_{t-2}) + bcE(Z_{t-2}Z_t) + c^2E(Z_{t-2}Z_{t-2}) = (b^2 + c^2)\sigma^2$
+\end{flushleft}
 
+\begin{flushleft}
 2. $h = 2$: \\
 $Cov(X_{t+2}, X_t) = b^2E(Z_{t+2}Z_t) + bcE(Z_{t+2}Z_{t-2}) + bcE(Z_{t}Z_t) + c^2E(Z_{t}Z_{t-2}) = bc\sigma^2$
+\end{flushleft}
 
+\begin{flushleft}
 3. $h = -2$: \\
 $Cov(X_{t-2}, X_t) = b^2E(Z_{t-2}Z_t) + bcE(Z_{t-2}Z_{t-2}) + bcE(Z_{t-4}Z_t) + c^2E(Z_{t-4}Z_{t-2}) = bc\sigma^2$
+\end{flushleft}
 
+\begin{flushleft}
 4. $|h| > 2$: \\
-$Cov(X_{t+2}, X_t) = 0$ \\
+$Cov(X_{t+h}, X_t) = 0$ \\
 Следователно $Cov(X_{t+0}, X_t)$ не зависи от $t$ за всяко $h$. Следователно процесът е стационарен.
+\end{flushleft}
 
 \end{flushleft}
 
 \section*{Задача 5}
 \begin{flushleft}
-
-\textbf{1. $X_t = a + bZ_0$}
+Даден е $\{X_t \}$ да е $AR(1)$ процес, определен от $X_t = \phi X_{t-1} + Z_t$, където $\{Z_t \}$ e $WN(0, \sigma^2), |\phi| < 1$ и $Z_t$ е некорелирано с $X_s$ за всяко $s < t$. Също така $\phi = 0.9$ и $\sigma^2 = 1$. \\
+\end{flushleft}
 \begin{flushleft}
-\end{flushleft}
-\end{flushleft}
-
-
+$Var \overline{X}_4 = \frac{1}{4^2} \sum_{i=1}^{4} \sum_{j=1}^{4} Cov(X_i, X_j) = \frac{1}{4^2} \sum_{i-j=-4}^{4} (n - |i - j|)\gamma(i-j) = \frac{1}{4} \sum_{h=-4}^{4} (1 - \frac{|h|}{n})\gamma(h) = \frac{1}{4} \sum_{h=-4}^{4} (1 - \frac{|h|}{4}) \frac{\phi^{|h|} \sigma^2}{1 - \phi^2}$
 \end{flushleft}
 
+\section*{Задача 6}
+\begin{flushleft}
+Нека $\{X_t \}$ има функция на средните стойности $\mu_X(t) = \mu_X,$ която не зависи от $t$, тъй като по условие процесът е стационарен. И нека $\{X_t \}$ има автоковариационна функция $\gamma_X(h) = Cov(X_{t+h}, X_{t}),$ която не зависи от $t$ за всяко $h$, тъй като по условие процесът е стационарен.
 
+\begin{flushleft}
+Нека $\{Y_t \}$ има функция на средните стойности $\mu_Y(t) = \mu_Y,$ която не зависи от $t$, тъй като по условие процесът е стационарен. И нека $\{Y_t \}$ има автоковариационна функция $\gamma_Y(h) = Cov(Y_{t+h}, Y_{t}),$ която не зависи от $t$ за всяко $h$, тъй като по условие процесът е стационарен.
+\end{flushleft}
+
+\begin{flushleft}
+Да пресметнем функцията на средните на процеса $\{X_t + Y_t \}$: \\
+$$\mu_{XY} = E(X_t + Y_t) = E(X_t) + E(Y_t) = \mu_X + \mu_Y$$ и тъй като $\mu_X$ и $\mu_Y$ не зависят от $t$, то и $\mu_{XY}$ не зависи от $t$.
+\end{flushleft}
+\begin{flushleft}
+Да пресметнем автоковариационната функцията на процеса $\{X_t + Y_t \}$: \\
+$\gamma_{XY} = Cov(X_{t+h} + Y_{t+h}, X_t + Y_t) = Cov(X_{t+h}, X_{t}) + Cov(X_{t+h}, Y_t) + Cov(Y_{t+h}, X_t) + Cov(Y_{t+h}, Y_t) = \gamma_X + 0 + 0 + \gamma_Y = \gamma_X + \gamma_Y$ \\ 
+и тъй като $\gamma_X$ и $\gamma_Y$ не зависят от $t$ за всяко $h$, то и $\gamma_{XY}$ не зависи от $t$ за всяко $h$. 
+\end{flushleft}
+Следователно процесът $\{X_t + Y_t \}$ е стационарен с автоковариационна функция, равна на сумата от автоковариационните функции на $\{X_t \}$ и $\{Y_t \}$.
+\end{flushleft}
+
+\section*{Задача 15}
+\begin{flushleft}
+Даден е $\{X_t \}$ да е $AR(1)$ процес, определен от $X_t = \phi X_{t-1} + Z_t$, където $\{Z_t \}$ e $WN(0, \sigma^2), |\phi| < 1$ и $Z_t$ е некорелирано с $X_s$ за всяко $s < t$. Също така $\phi = 0.9$ и $\sigma^2 = 1$. \\
+\end{flushleft}
+\begin{flushleft}
+$Var \overline{X}_4 = \frac{1}{4^2} \sum_{i=1}^{4} \sum_{j=1}^{4} Cov(X_i, X_j) = \frac{1}{4^2} \sum_{i-j=-4}^{4} (n - |i - j|)\gamma(i-j) = \frac{1}{4} \sum_{h=-4}^{4} (1 - \frac{|h|}{n})\gamma(h) = \frac{1}{4} \sum_{h=-4}^{4} (1 - \frac{|h|}{4}) \frac{\phi^{|h|} \sigma^2}{1 - \phi^2}$
+\end{flushleft}
+
+\end{flushleft}
 \end{document}
