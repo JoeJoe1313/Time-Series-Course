@@ -56,10 +56,113 @@
 (е) стойностите на реда имат постоянна тенденция към наратсване $\rightarrow$ съдържащ тренд
 \end{flushleft}
 
+\textbf{7. В кой метод на прогнозиране стойността на изучаваната величина в текущия период се счита за прогноза за следващия?}
+\begin{flushleft}
+При наивните методи се предполага, че последният период най-добре прогнозира бъдещето. Тъй като на текущата стойност на времевия ред се приписва стопроцентна тежест, може да наречем наивната прогноза "прогноза без изменение": $$\widehat{X}_{t+1} = X_t$$.
+\end{flushleft}
+
+\textbf{8. В кой наивен метод на прогнозиране на наблюденията се приписват равни теглови коефициенти?}
+\begin{flushleft}
+В метода на простите средни за създаване на прогноза за следващия период се използва средната стойност на всички минали стойности на времевия ред. 
+\end{flushleft}
+
+\textbf{9. Какъв наивен метод на прогнозиране трябва да изберем, ако данните имат сезонност?}
+\begin{flushleft}
+Наивен метод при данни със сезонност, ако сезонните вариации са достатъчни силни, може да бъде: $$\widehat{X}_{t+1} = X_{t-d+1},$$ където $d$ е сезонната компонента.
+\end{flushleft}
+
 \end{flushleft}
 
 \section*{Задача 2}
-Нека да е даден следният времеви ред:
+\begin{flushleft}
+
+\textbf{1. Каква прогноза за периода 9 ще получим по метода на плаващото средно за 5 периода?}
+\begin{flushleft}
+$\widehat{X}_9 = \frac{X_8 + X_7 + X_6 + X_5 + X_4}{5} = \frac{216 + 219 + 220 + 225 + 226}{5} = 221.2$
+\end{flushleft}
+
+\textbf{2. Експоненциално изглаждане при $\alpha = 0.2$:}
+\begin{flushleft}
+$\widehat{Y}_2 = \alpha Y_1 + (1 - \alpha) \widehat{Y}_1 = 0.2\times200 + 0.8\times200 = 200$ \\
+$\widehat{Y}_3 = \alpha Y_2 + (1 - \alpha) \widehat{Y}_2 = 0.2\times210 + 0.8\times200 = 202$ \\
+$\widehat{Y}_4 = \alpha Y_3 + (1 - \alpha) \widehat{Y}_3 = 0.2\times215 + 0.8\times202 = 204.6$ \\
+Грешка от прогнозата за период 3: $$e_3 = Y_3 - \widehat{Y}_3 = 215 - 202 = 13.$$
+За прогнозата за период 4 можем да очакваме отново по-ниска стойност от действителната, което наистина е така. \\
+$MAD = \frac{1}{n} \sum_{t=1}^{n} |Y_t - \widehat{Y}_t| = \frac{1}{3} \sum_{t=1}^{3} |Y_t - \widehat{Y}_t|$ \\
+$MSE = \frac{1}{n} \sum_{t=1}^{n} (Y_t - \widehat{Y}_t)^2 = \frac{1}{3} \sum_{t=1}^{3} (Y_t - \widehat{Y}_t)^2$ \\
+$MAPE = \frac{1}{n} \sum_{t=1}^{n} \frac{|Y_t - \widehat{Y}_t|}{Y_t} = \frac{1}{3} \sum_{t=1}^{3} \frac{|Y_t - \widehat{Y}_t|}{Y_t}$ \\
+$MAPE = \frac{1}{n} \sum_{t=1}^{n} \frac{(Y_t - \widehat{Y}_t)}{Y_t} = \frac{1}{3} \sum_{t=1}^{3} \frac{(Y_t - \widehat{Y}_t)}{Y_t}$ \\
+
+$MAD = \frac{1}{n} \sum_{t=1}^{n} |Y_t - \widehat{Y}_t| = \frac{1}{4} \sum_{t=1}^{4} |Y_t - \widehat{Y}_t|$ \\
+$MSE = \frac{1}{n} \sum_{t=1}^{n} (Y_t - \widehat{Y}_t)^2 = \frac{1}{4} \sum_{t=1}^{4} (Y_t - \widehat{Y}_t)^2$ \\
+$MAPE = \frac{1}{n} \sum_{t=1}^{n} \frac{|Y_t - \widehat{Y}_t|}{Y_t} = \frac{1}{4} \sum_{t=1}^{4} \frac{|Y_t - \widehat{Y}_t|}{Y_t}$ \\
+$MAPE = \frac{1}{n} \sum_{t=1}^{n} \frac{(Y_t - \widehat{Y}_t)}{Y_t} = \frac{1}{4} \sum_{t=1}^{4} \frac{(Y_t - \widehat{Y}_t)}{Y_t}$ \\
+\end{flushleft}
+
+\textbf{3. Избиране на оптимална стойност на $\alpha$:}
+\begin{flushleft}
+За оптимална оценка на $\alpha$ един от методите използва минимизация на $MSE$. Последователно се изчисляват прогнози за $\alpha$, равно на 0.1, 0.2, ..., 0.9 и се пресмята $MSE$ за всяка една от тях. Стойността на $\alpha$, за която $MSE$ се окаже най-малка, се избира за по-нататъшно използване в прогнозите.
+\end{flushleft}
+
+\end{flushleft}
+
+\section*{Задача 3}
+\begin{flushleft}
+
+\textbf{1.} вярно \\
+\textbf{2.} вярно \\
+\textbf{3.} вярно \\
+\textbf{4.} грешно
+
+\end{flushleft}
+
+\section*{Задача 4}
+\begin{flushleft}
+
+\textbf{1. $X_t = a + bZ_0$}
+\begin{flushleft}
+$EX_t = E(a + bZ_0) = E(a) + E(bZ_0) = a + bE(Z_0) = a,$ което не зависи от $t$. \\
+$Cov(X_{t+h}, X_t) = Cov(a + bZ_0, a + bZ_0) = Var(a + bZ_0) = Var(a) + Var(bZ_0) = a^2 + b^2Var(Z_0) = a^2 + b^2 \sigma^2,$ което не зависи от $t$ за всяко $h$. Следователно процесът е стационарен. 
+\end{flushleft}
+
+\textbf{2. $X_t = a + bZ_t + cZ_{t-2}$}
+\begin{flushleft}
+$EX_t = E(a + bZ_t + cZ_{t-2}) = E(a) + E(bZ_t) + E(cZ_{t-2}) = a + bE(Z_t) + cE(Z_{t-2}) = a,$ което не зависи от $t$. \\
+
+$E{X_t}^2 = E((a + bZ_t + cZ_{t-2})^2) = E(a^2 + b^2{Z_t}^2 + c^2{Z_{t-2}^2} + 2abZ_t + 2acZ_{t-2} + 2bcZ_tZ_{t-2}) = a^2 + b^2\sigma^2 + c^2\sigma^2 = a^2 + (b^2 + c^2)\sigma^2 < \infty$\\
+
+$Cov(X_{t+h}, X_t) = $ \\ 
+$Cov(a + bZ_{t+h} + cZ_{t+h-2}, a + bZ_t + cZ_{t-2}) = $ \\
+$Cov(bZ_{t+h}, bZ_{t}) +Cov(bZ_{t+h}, cZ_{t-2}) + Cov(cZ_{t+h-2}, bZ_t) + Cov(cZ_{t+h-2}, cZ_{t-2}) =$ \\ 
+$b^2Cov(Z_{t+h}, Z_t) + bcCov(Z_{t+h}, Z_{t-2}) + bcCov(Z_{t+h-2}, Z_t) + c^2Cov(Z_{t+h-2}, Z_{t-2}) =$ \\
+$b^2E(Z_{t+h}Z_t) + bcE(Z_{t+h}Z_{t-2}) + bcE(Z_{t+h-2}Z_t) + c^2E(Z_{t+h-2}Z_{t-2})$ \\
+
+Получаваме следните случаи: \\
+1. $h = 0$: \\
+$Cov(X_{t+0}, X_t) = b^2E(Z_{t}Z_t) + bcE(Z_{t}Z_{t-2}) + bcE(Z_{t-2}Z_t) + c^2E(Z_{t-2}Z_{t-2}) = (b^2 + c^2)\sigma^2$
+
+2. $h = 2$: \\
+$Cov(X_{t+2}, X_t) = b^2E(Z_{t+2}Z_t) + bcE(Z_{t+2}Z_{t-2}) + bcE(Z_{t}Z_t) + c^2E(Z_{t}Z_{t-2}) = bc\sigma^2$
+
+3. $h = -2$: \\
+$Cov(X_{t-2}, X_t) = b^2E(Z_{t-2}Z_t) + bcE(Z_{t-2}Z_{t-2}) + bcE(Z_{t-4}Z_t) + c^2E(Z_{t-4}Z_{t-2}) = bc\sigma^2$
+
+4. $|h| > 2$: \\
+$Cov(X_{t+2}, X_t) = 0$ \\
+Следователно $Cov(X_{t+0}, X_t)$ не зависи от $t$ за всяко $h$. Следователно процесът е стационарен.
+
+\end{flushleft}
+
+\section*{Задача 5}
+\begin{flushleft}
+
+\textbf{1. $X_t = a + bZ_0$}
+\begin{flushleft}
+\end{flushleft}
+\end{flushleft}
+
+
+\end{flushleft}
 
 
 \end{document}
